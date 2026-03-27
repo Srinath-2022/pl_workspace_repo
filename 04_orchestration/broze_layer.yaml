@@ -1,0 +1,12 @@
+resources:
+  jobs:
+    bronze_job:
+      name: bronze_job
+      tasks:
+        - task_key: pl_bronze
+          notebook_task:
+            notebook_path: /Workspace/Users/22203054@rmd.ac.in/pl_workspace_repo/01_Bronze/01_notebooks/nb_bronze
+            source: WORKSPACE
+      queue:
+        enabled: true
+      performance_target: PERFORMANCE_OPTIMIZED

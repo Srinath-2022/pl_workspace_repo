@@ -1,0 +1,30 @@
+resources:
+  jobs:
+    gold_job:
+      name: gold_job
+      tasks:
+        - task_key: nb_gold_dim
+          notebook_task:
+            notebook_path: /Workspace/Users/22203054@rmd.ac.in/pl_workspace_repo/03_Gold/01_notebooks/nb_gold_dim
+            source: WORKSPACE
+        - task_key: nb_gold_fact
+          depends_on:
+            - task_key: nb_gold_dim
+          notebook_task:
+            notebook_path: /Workspace/Users/22203054@rmd.ac.in/pl_workspace_repo/03_Gold/01_notebooks/nb_gold_fact
+            source: WORKSPACE
+        - task_key: nb_gold_cube
+          depends_on:
+            - task_key: nb_gold_fact
+          notebook_task:
+            notebook_path: /Workspace/Users/22203054@rmd.ac.in/pl_workspace_repo/03_Gold/01_notebooks/nb_gold_cubetable
+            source: WORKSPACE
+        - task_key: nb_gold_kpis
+          depends_on:
+            - task_key: nb_gold_cube
+          notebook_task:
+            notebook_path: /Workspace/Users/22203054@rmd.ac.in/pl_workspace_repo/03_Gold/02_KPI/01_notebooks/nb_gold_kpis
+            source: WORKSPACE
+      queue:
+        enabled: true
+      performance_target: PERFORMANCE_OPTIMIZED

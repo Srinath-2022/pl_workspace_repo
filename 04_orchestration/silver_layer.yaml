@@ -1,0 +1,44 @@
+resources:
+  jobs:
+    silver_job:
+      name: silver_job
+      tasks:
+        - task_key: nb_silver_accounts
+          notebook_task:
+            notebook_path: /Workspace/Users/22203054@rmd.ac.in/pl_workspace_repo/02_Silver/01_notebooks/nb_accounts
+            source: WORKSPACE
+        - task_key: nb_silver_company
+          depends_on:
+            - task_key: nb_silver_accounts
+          notebook_task:
+            notebook_path: /Workspace/Users/22203054@rmd.ac.in/pl_workspace_repo/02_Silver/01_notebooks/nb_company
+            source: WORKSPACE
+        - task_key: nb_silver_departments
+          depends_on:
+            - task_key: nb_silver_company
+          notebook_task:
+            notebook_path: /Workspace/Users/22203054@rmd.ac.in/pl_workspace_repo/02_Silver/01_notebooks/nb_departments
+            source: WORKSPACE
+        - task_key: nb_silver_employee
+          depends_on:
+            - task_key: nb_silver_departments
+          notebook_task:
+            notebook_path: /Workspace/Users/22203054@rmd.ac.in/pl_workspace_repo/02_Silver/01_notebooks/nb_employee
+            source: WORKSPACE
+        - task_key: nb_silver_gl
+          depends_on:
+            - task_key: nb_silver_employee
+          notebook_task:
+            notebook_path: /Workspace/Users/22203054@rmd.ac.in/pl_workspace_repo/02_Silver/01_notebooks/nb_gl
+            source: WORKSPACE
+        - task_key: nb_silver_payroll
+          depends_on:
+            - task_key: nb_silver_gl
+          notebook_task:
+            notebook_path: /Workspace/Users/22203054@rmd.ac.in/pl_workspace_repo/02_Silver/01_notebooks/nb_payroll
+            source: WORKSPACE
+      queue:
+        enabled: true
+      performance_target: PERFORMANCE_OPTIMIZED
+      
+

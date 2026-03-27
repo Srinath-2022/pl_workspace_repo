@@ -1,0 +1,20 @@
+resources:
+  jobs:
+    Global_tech_final_pipeline:
+      name: Global_tech_final_pipeline
+      tasks:
+        - task_key: Global_tech_bronzelayer
+          run_job_task:
+            job_id: 1105191726676
+        - task_key: Global_tech_silverlayer
+          depends_on:
+            - task_key: Global_tech_bronzelayer
+          run_job_task:
+            job_id: 346280414480756
+        - task_key: Global_tech_goldlayer
+          depends_on:
+            - task_key: Global_tech_silverlayer
+          run_job_task:
+            job_id: 768948909682859
+      queue:
+        enabled: true
